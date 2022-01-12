@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+  it { should have_many(:quotes) }
+  it { should have_many(:quote_items) }
+
   it "has a valid factory" do
     expect(build(:item)).to be_valid
   end
