@@ -10,31 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_181504) do
-
+ActiveRecord::Schema.define(version: 20_220_112_172_127) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "items", force: :cascade do |t|
-    t.string "code"
-    t.string "name"
-    t.integer "price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'items', force: :cascade do |t|
+    t.string 'code'
+    t.string 'name'
+    t.integer 'price'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "quote_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "quote_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'quotes', force: :cascade do |t|
+    t.integer 'subtotal', default: 0
+    t.integer 'total', default: 0
+    t.string 'item_codes', default: [], array: true
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
-
-  create_table "quotes", force: :cascade do |t|
-    t.integer "subtotal", default: 0
-    t.integer "total", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
 end
