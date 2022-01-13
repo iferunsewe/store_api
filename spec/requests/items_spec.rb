@@ -1,16 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe '/items', type: :request do
-  let(:item) { create(:item) }
-
   describe 'GET /index' do
     it 'renders a successful response' do
+      item = create(:item)
       get items_url, as: :json
       expect(response).to be_successful
+      expect(response.body).to eq([{code: item.code, name: item.name, price: item.formatted_price}].to_json)
     end
   end
 
   describe 'PATCH /update' do
+    let(:item) { create(:item) }
+
     context 'with valid parameters' do
       let(:new_attributes) { { price: 750 } }
 

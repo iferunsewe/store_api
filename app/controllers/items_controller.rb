@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
+    @items ||= Item.all.map{|item| {code: item.code, name: item.name, price: item.formatted_price}}
 
     render json: @items
   end
@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   def update
     if @item.update(item_params)
-      render json: @item
+      render json: {code: @item.code, name: @item.name, price: @item.formatted_price}, status: :ok, location: @item
     else
       render json: @item.errors, status: :unprocessable_entity
     end
