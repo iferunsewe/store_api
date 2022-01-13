@@ -20,5 +20,10 @@ RSpec.describe Discount, type: :model do
       discount = create(:discount, discount_type: 'percentage', code: 'A', min_quantity: 2, discount_percentage: 10)
       expect(discount.apply(amount: 40, item_codes: %w[A B A])).to eq(38)
     end
+
+    it 'returns the original amount if the item does not exist' do
+      discount = create(:discount, discount_type: 'bundle', code: 'X', min_quantity: 2)
+      expect(discount.apply(amount: 10, item_codes: %w[X X A])).to eq(10)
+    end
   end
 end

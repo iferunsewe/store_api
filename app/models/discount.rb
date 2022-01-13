@@ -12,9 +12,8 @@ class Discount < ApplicationRecord
   private
 
   def apply_bundle(amount:, code_count:)
-    return amount if code_count < min_quantity
     item = Item.find_by(code: code)
-    return amount if item.nil?
+    return amount if code_count < min_quantity || item.nil?
 
     discounted_amount = amount
     deduction = item.price
@@ -23,9 +22,8 @@ class Discount < ApplicationRecord
 
 
   def apply_percentage(amount:, code_count:)
-    return amount if discount_percentage.nil? || code_count < min_quantity
     item = Item.find_by(code: code)
-    return amount if item.nil?
+    return amount if discount_percentage.nil? || code_count < min_quantity || item.nil?
 
     discounted_amount = amount
     deduction = (code_count * item.price) * (discount_percentage.to_f/100.to_f)
