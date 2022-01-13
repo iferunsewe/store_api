@@ -11,6 +11,7 @@ To install this repository please do the following:
   3. `bundle install` (this will install all the dependencies)
   4. `bundle rake db:create db:migrate db:seed` (this will create the database, run migrations and seed relevant data)
   
+*Note there are some items, discounts and quotes seeded when yoo run `rake db:seed`. The respective records can be found in `db/seeds.rb`.
 
 ## Usage
 
@@ -21,6 +22,8 @@ In order to use the API locally, please do the following from your local pokemon
 
   
   ### Endpoints
+
+  #### Items
 
   *GET /items* - All the existing items in the store, as well as their attributes.
   
@@ -57,6 +60,8 @@ In order to use the API locally, please do the following from your local pokemon
   }
   ```
 
+  #### Quotes
+
   *POST /quotes* - Create a quote and get the price of items.
   
   Example request parameters
@@ -76,6 +81,34 @@ In order to use the API locally, please do the following from your local pokemon
   }
   ```
   *Note in this example 'ITEM-1' and 'ITEM-2' are codes of items that have been created prior to retrieving a quote
+  
+  ### Table
+
+  #### Items
+
+    | column | type    |
+    | code   | string  |
+    | name   | string  |
+    | price  | integer |
+
+  #### Quotes
+
+    | column     | type    |
+    | total      | integer |
+    | subtotal   | integer |
+    | item_codes | array   |
+
+  #### Discounts
+
+    | column              | type    |
+    | discount_type       | integer |
+    | code                | string  |
+    | min_quantity        | integer |
+    | discount_percentage | integer |
+
+  *Note the discount_type can only be chosen from two different types at the moment 'bundle' and 'percentage'. See 'app/models/discount.rb' to check what each discount does.
+
+  `bundle exec rails console` - run this from the root of your directory and you can create a record in any of these tables e.g. `Item.create({ code: 'MUG', name: 'Reedsy Mug', price: 600 })`.
 
 ## Testing
 

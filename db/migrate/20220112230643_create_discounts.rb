@@ -4,7 +4,6 @@ class CreateDiscounts < ActiveRecord::Migration[6.0]
       t.integer :discount_type
       t.string :code
       t.integer :min_quantity
-      t.integer :quote_id
       t.integer :discount_percentage, default: 0
 
       t.timestamps
