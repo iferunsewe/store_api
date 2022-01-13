@@ -22,7 +22,7 @@ In order to use the API locally, please do the following from your local pokemon
   
   ### Endpoints
 
-  GET /items - All the existing items in the store, as well as their attributes.
+  *GET /items* - All the existing items in the store, as well as their attributes.
   
   Example response
   ```
@@ -35,7 +35,7 @@ In order to use the API locally, please do the following from your local pokemon
   }
   ```
 
-  PUT /items - Update the price of a given item.
+  *PUT /items* - Update the price of a given item.
 
   Example request parameters
   ```
@@ -57,7 +57,7 @@ In order to use the API locally, please do the following from your local pokemon
   }
   ```
 
-  POST /quotes - Create a quote and get the price of items.
+  *POST /quotes*- Create a quote and get the price of items.
   
   Example request parameters
   ```
