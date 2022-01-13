@@ -57,7 +57,7 @@ In order to use the API locally, please do the following from your local pokemon
   }
   ```
 
-  *POST /quotes*- Create a quote and get the price of items.
+  *POST /quotes* - Create a quote and get the price of items.
   
   Example request parameters
   ```
