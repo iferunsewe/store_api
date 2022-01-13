@@ -6,7 +6,7 @@ class Quote < ApplicationRecord
 
   def apply_discounts
     new_total = subtotal
-    Discount.all.each do |discount|
+    Discount.where(code: item_codes).each do |discount|
       new_total = discount.apply(amount: new_total, item_codes: item_codes)
     end
     new_total
