@@ -4,6 +4,14 @@ class Quote < ApplicationRecord
   after_save :update_subtotal, if: :item_codes_present_and_changed?
   after_save :update_total, if: :saved_change_to_subtotal?
 
+  def apply_discounts
+    new_total = subtotal
+    Discount.all.each do |discount|
+      new_total = discount.apply(amount: new_total, item_codes: item_codes)
+    end
+    new_total
+  end
+
   private
 
   def update_subtotal
@@ -16,7 +24,8 @@ class Quote < ApplicationRecord
   end
 
   def update_total
-    update(total: subtotal)
+    new_total = apply_discounts
+    update(total: new_total)
   end
 
   def item_codes_present_and_changed?
