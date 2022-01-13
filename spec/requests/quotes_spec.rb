@@ -8,8 +8,8 @@ RSpec.describe '/quotes', type: :request do
       let(:valid_attributes) { { item_codes: %w[ITEM-1 ITEM-2] } }
       
       before do
-        create(:item, code: 'ITEM-1', name: 'Item 1', price: 10)
-        create(:item, code: 'ITEM-2', name: 'Item 2', price: 20)
+        create(:item, code: 'ITEM-1', name: 'Item 1', price: 1000)
+        create(:item, code: 'ITEM-2', name: 'Item 2', price: 2000)
       end
 
       it 'creates a new Quote' do
@@ -24,7 +24,7 @@ RSpec.describe '/quotes', type: :request do
              params: { quote: valid_attributes }, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including('application/json'))
-        expect(JSON.parse(response.body)).to eq({"item_codes"=> %w[ITEM-1 ITEM-2], "total"=> 30})
+        expect(JSON.parse(response.body)).to eq({"item_codes"=> %w[ITEM-1 ITEM-2], "total"=> '30.00€'})
       end
     end
 

@@ -12,6 +12,10 @@ class Quote < ApplicationRecord
     new_total
   end
 
+  def formatted_total
+    "#{sprintf('%.2f', total/100)}€"
+  end
+
   private
 
   def update_subtotal

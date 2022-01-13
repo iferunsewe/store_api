@@ -62,7 +62,7 @@ In order to use the API locally, please do the following from your local pokemon
   Example request parameters
   ```
   { 
-    "item_codes": ['ITEM-1', 'ITEM-2']
+    "item_codes":["ITEM-1", "ITEM-2"]
   }
   ```
 
@@ -70,8 +70,8 @@ In order to use the API locally, please do the following from your local pokemon
   ```
   {
     {
-      "item_codes": ['ITEM-1', 'ITEM-2'], 
-      "total"=> 30
+      "item_codes": ["ITEM-1", "ITEM-2"], 
+      "total"=> "30.00€"
     },
   }
   ```
