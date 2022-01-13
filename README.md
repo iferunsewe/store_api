@@ -86,24 +86,24 @@ In order to use the API locally, please do the following from your local pokemon
 
   #### Items
 
-    | column | type    |
-    | :----: | :-----: |
+    | Column | Type    |
+    | ------ | ------- |
     | code   | string  |
     | name   | string  |
     | price  | integer |
 
   #### Quotes
 
-    | column     | type    |
-    | :--------: | :-----: |
+    | Column     | Type    |
+    | ---------- | ------- |
     | total      | integer |
     | subtotal   | integer |
     | item_codes | array   |
 
   #### Discounts
 
-    | column              | type    |
-    | :-----------------: | :-----: |
+    | Column              | Type    |
+    | ------------------- | ------- |
     | discount_type       | integer |
     | code                | string  |
     | min_quantity        | integer |
