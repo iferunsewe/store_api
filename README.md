@@ -87,6 +87,7 @@ In order to use the API locally, please do the following from your local pokemon
   #### Items
 
     | column | type    |
+    | :----: | :-----: |
     | code   | string  |
     | name   | string  |
     | price  | integer |
@@ -94,6 +95,7 @@ In order to use the API locally, please do the following from your local pokemon
   #### Quotes
 
     | column     | type    |
+    | :--------: | :-----: |
     | total      | integer |
     | subtotal   | integer |
     | item_codes | array   |
@@ -101,6 +103,7 @@ In order to use the API locally, please do the following from your local pokemon
   #### Discounts
 
     | column              | type    |
+    | :-----------------: | :-----: |
     | discount_type       | integer |
     | code                | string  |
     | min_quantity        | integer |
