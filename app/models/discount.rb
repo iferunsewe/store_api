@@ -6,12 +6,7 @@ class Discount < ApplicationRecord
   def apply(amount:, item_codes:)
     code_count = item_codes.tally[code]
     
-    case discount_type
-    when 'bundle'
-      apply_bundle(amount: amount, code_count: code_count)
-    when 'percentage'
-      apply_percentage(amount: amount, code_count: code_count)
-    end
+    send("apply_#{discount_type}", amount: amount, code_count: code_count)
   end
 
   private
