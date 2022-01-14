@@ -99,6 +99,8 @@ In order to use the API locally, please do the following from your local store_a
   }
   ```
   *Note in this example 'ITEM-1' and 'ITEM-2' are codes of items that have been created prior to retrieving a quote
+
+  If you want to use the production API, the url for it is https://immense-sea-28744.herokuapp.com
   
   ### Table
 
