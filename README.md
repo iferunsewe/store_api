@@ -133,6 +133,6 @@ In order to use the API locally, please do the following from your local pokemon
 
 ## Testing
 
-To run the tests for this project, please run the following from your local pokemon_api respository:
+To run the tests for this project, please run the following from your local store_api respository:
 
   `bundle exec rspec`
