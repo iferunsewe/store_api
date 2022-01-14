@@ -1,16 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe '/quotes', type: :request do
-  let(:quote) { create(:quote) }
+
+  before do
+    create(:item, code: 'ITEM-1', name: 'Item 1', price: 1000)
+    create(:item, code: 'ITEM-2', name: 'Item 2', price: 2000)
+  end
+  
+  describe 'GET /quotes/:id' do
+    it 'returns a quote' do
+      quote = create(:quote, item_codes: ['ITEM-1', 'ITEM-2'])
+      get "/quotes/#{quote.id}"
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to eq({
+        item_codes: quote.item_codes,
+        total: quote.formatted_total
+      }.to_json)
+    end
+  end
+
+  describe 'GET /quotes' do
+    it 'returns a list of quotes' do
+      quote = create(:quote, item_codes: ['ITEM-1', 'ITEM-2'])
+      get quotes_url, as: :json
+
+      expect(response).to be_successful
+      expect(response.body).to eq([{item_codes: quote.item_codes, total: quote.formatted_total}].to_json)
+    end
+  end
 
   describe 'POST /create' do
     context 'with valid parameters' do
       let(:valid_attributes) { { item_codes: %w[ITEM-1 ITEM-2] } }
-      
-      before do
-        create(:item, code: 'ITEM-1', name: 'Item 1', price: 1000)
-        create(:item, code: 'ITEM-2', name: 'Item 2', price: 2000)
-      end
 
       it 'creates a new Quote' do
         expect do

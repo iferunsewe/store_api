@@ -61,6 +61,24 @@ In order to use the API locally, please do the following from your local pokemon
   ```
 
   #### Quotes
+  
+  *GET /quotes* - All the existing quotes
+  
+  Example response
+  ```
+  { 
+    [
+      {
+        "item_codes": ["ITEM-1", "ITEM-2"],
+        "total": "30.00€" 
+      },
+      {
+        "item_codes": ["ITEM-3", "ITEM-4"],
+        "total": "40.00€" 
+      },
+    ]
+  }
+  ```
 
   *POST /quotes* - Create a quote and get the price of items.
   
