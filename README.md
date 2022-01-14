@@ -15,7 +15,7 @@ To install this repository please do the following:
 
 ## Usage
 
-In order to use the API locally, please do the following from your local pokemon_api respository:
+In order to use the API locally, please do the following from your local store_api respository:
 
   1. bundle exec rails s -p 3000(this will start a local server for you)
   2. Make requests to the following endpoints from `http://localhost:3000`:
