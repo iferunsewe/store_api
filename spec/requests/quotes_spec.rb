@@ -45,7 +45,7 @@ RSpec.describe '/quotes', type: :request do
              params: { quote: valid_attributes }, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including('application/json'))
-        expect(JSON.parse(response.body)).to eq({"item_codes"=> %w[ITEM-1 ITEM-2], "total"=> '30.00€'})
+        expect(response.body).to eq(Quote.last.to_json)
       end
     end
 

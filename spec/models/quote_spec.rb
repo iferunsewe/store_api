@@ -3,6 +3,23 @@ require 'rails_helper'
 RSpec.describe Quote, type: :model do
   it { should validate_presence_of(:item_codes) }
 
+  context "when both item codes are invalid" do
+    it 'invalidates the quote' do
+      quote = build(:quote, item_codes: ['ITEM-1', 'ITEM-2'])
+      quote.validate
+      expect(quote.errors.messages[:item_codes]).to eq(['are invalid'])
+    end
+  end
+
+  context "when some item codes are invalid" do
+    it 'invalidates the quote' do
+      create(:item, code: 'ITEM-1', name: 'Item 1', price: 1000)
+      quote = build(:quote, item_codes: ['ITEM-1', 'ITEM-2'])
+      quote.validate
+      expect(quote.errors.messages[:item_codes]).to eq(['are invalid'])
+    end
+  end
+  
   it 'updates subtotal after saving' do
     create(:item, code: 'MUG', price: 10)
     quote = create(:quote, item_codes: %w[MUG MUG])
