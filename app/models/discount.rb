@@ -26,7 +26,7 @@ class Discount < ApplicationRecord
     return amount if discount_percentage.nil? || code_count < min_quantity || item.nil?
 
     discounted_amount = amount
-    deduction = (code_count * item.price) * (discount_percentage.to_f/100.to_f)
+    deduction = (code_count * item.price) * (discount_percentage.to_f/100)
     discounted_amount -= deduction
     discounted_amount.to_i
   end
