@@ -9,7 +9,7 @@ To install this repository please do the following:
   1. `git clone git@github.com:iferunsewe/store_api.git`
   2. `cd store_api`
   3. `bundle install` (this will install all the dependencies)
-  4. `bundle rake db:create db:migrate db:seed` (this will create the database, run migrations and seed relevant data)
+  4. `bundle exec rake db:create db:migrate db:seed` (this will create the database, run migrations and seed relevant data)
   
 *Note there are some items, discounts and quotes seeded when yoo run `rake db:seed`. The respective records can be found in `db/seeds.rb`.
 
@@ -138,7 +138,3 @@ In order to use the API locally, please do the following from your local store_a
 To run the tests for this project, please run the following from your local store_api respository:
 
   `bundle exec rspec`
-
-## A bit about myself
-
-Hey my name is Ife, I’ve been a software developer for 6+ years mostly coding in Ruby and Javascript. In that time I’ve also worked as led cross functional teams, been an engineering manager and attempted to start my own company. In my own time, I’m very into football and music.
