@@ -43,8 +43,8 @@ In order to use the API locally, please do the following from your local store_a
   Example request parameters
   ```
   {
-    item: {
-      price: 750
+    "item" : {
+      "price" : 750
     }
   }
   ```
