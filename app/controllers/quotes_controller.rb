@@ -18,10 +18,7 @@ class QuotesController < ApplicationController
     @quote = Quote.new(quote_params)
 
     if @quote.save
-      render json: {
-        item_codes: @quote.item_codes,
-        total: @quote.formatted_total
-      }, status: :created, location: @quote
+      render json: @quote, status: :created, location: @quote
     else
       render json: @quote.errors, status: :unprocessable_entity
     end
